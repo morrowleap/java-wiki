@@ -42,6 +42,7 @@ Do exactly this:
 ```
 | [Page Title](concepts/foo.md) | short description |
 ```
+Note: encode spaces as `%20` in the path, never use single quotes. Example: `[Title](concepts/foo%20bar.md)`
 
 **Step 2** — Append to wiki/log.md:
 ```
@@ -84,7 +85,3 @@ Never delete any line from log.md.
 ---
 
 ## Hard Rules
-
-- Do not overwrite a page without appending an UPDATE entry to log.md
-- Do not assume Java knowledge — explain everything simply
-- Always link related concepts as `[[concept-name]]`
