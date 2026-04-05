@@ -5,3 +5,4 @@
 ---
 
 [2026-04-05] INIT: Wiki created. Structure set up. CLAUDE.md schema written. Roadmap initialized.
+[2026-04-06] INDEX: concepts/OOPs/Java OOP(Object Oriented Programming) Concepts.md added to index

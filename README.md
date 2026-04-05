@@ -62,7 +62,7 @@ References:
 https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f#llm-wiki
 - **Obsidian Web Clipper** is a browser extension that converts web articles to markdown. Very useful for quickly getting sources into your raw collection.
   
-- **Download images locally.** In Obsidian Settings → Files and links, set "Attachment folder path" to a fixed directory (e.g. `raw/assets/`). Then in Settings → Hotkeys, search for "Download" to find "Download attachments for current file" and bind it to a hotkey (e.g. Ctrl+Shift+D). After clipping an article, hit the hotkey and all images get downloaded to local disk. This is optional but useful — it lets the LLM view and reference images directly instead of relying on URLs that may break. Note that LLMs can't natively read markdown with inline images in one pass — the workaround is to have the LLM read the text first, then view some or all of the referenced images separately to gain additional context. It's a bit clunky but works well enough.
+- **Download images locally.** In Obsidian: Settings → Files and links → Attachment folder path: **"In subfolder under current folder"**. Hotkey for "Download attachments for current file": **Ctrl+Shift+D**. Lets the LLM reference images directly rather than relying on remote URLs.
 
 https://docs.ollama.com/integrations/claude-code
 
