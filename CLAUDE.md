@@ -65,28 +65,8 @@ Do exactly this — append one line to wiki/log.md:
 
 1. Read wiki/index.md
 2. Find a matching page and read it
-3. Answer from what is in the page. If no match, say: "Not in the wiki yet. Want me to create a stub?"
+3. Answer from what is in the page. If no match, say: "Not in the wiki yet."
 4. Append to log.md: `[DATE] QUERY: X`
-
----
-
-## Command: "create stub for X"
-
-Write a new file at wiki/concepts/x.md with this structure:
-
-    # X
-    
-    ## What is it?
-    
-    ## Why does it matter?
-    
-    ## How it works
-    
-    ## Common mistakes
-    
-    ## Related concepts
-
-Then index it (follow "index this" steps above).
 
 ---
 

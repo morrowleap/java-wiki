@@ -20,23 +20,14 @@ Read CLAUDE.md, then read wiki/index.md.
 - `"what do I know about inheritance?"`
 - `"what do I know about NullPointerException?"`
 
-### Creating a blank page to fill in later
-- `"create stub for interfaces"`
-
 ### Logging a note
 - `"log this: finished the OOP chapter"`
 
 ---
 
-## Running with a small local model (Ollama)
-
+## Running with a small local model (Ollama) via Claude Code:
 ```bash
-ollama run qwen2.5:4b
-```
-
-Or via Claude Code:
-```bash
-claude --model qwen2.5:4b
+ollama launch claude --model qwen3.5:4b
 ```
 
 The CLAUDE.md in this repo is written for small models — explicit commands, fill-in templates, no complex reasoning required.
