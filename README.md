@@ -16,10 +16,6 @@ Read CLAUDE.md, then read wiki/index.md.
 2. Tell the model: `"index this: wiki/concepts/your-topic.md — one line description"`
 3. The model updates index.md and log.md
 
-### Asking questions
-- `"what do I know about inheritance?"`
-- `"what do I know about NullPointerException?"`
-
 ### Logging a note
 - `"log this: finished the OOP chapter"`
 
