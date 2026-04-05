@@ -1,58 +1,73 @@
-# 📚 My Java Learning Wiki
+# My Java Learning Wiki
 
 A personal knowledge base for learning Java, maintained by an LLM agent.
-Built on the LLM Wiki pattern by Andrej Karpathy.
 
 ---
 
 ## How to use this wiki
 
-### Starting a session (paste this to Claude Code)
+### Starting a session
 ```
-Read CLAUDE.md, then read wiki/index.md and wiki/roadmap.md.
-Tell me where I left off and what's next.
+Read CLAUDE.md, then read wiki/index.md.
 ```
 
-### Adding new material
-1. Save an article, note, or paste text into `raw/`
-2. Tell Claude Code: `"File raw/[filename] into the wiki"`
-3. The agent updates the wiki, index, and log automatically
+### Adding a concept page
+1. Write the page yourself and save it to `wiki/concepts/your-topic.md`
+2. Tell the model: `"index this: wiki/concepts/your-topic.md — one line description"`
+3. The model updates index.md and log.md
 
 ### Asking questions
-Just ask naturally:
-- *"Explain how inheritance works based on what's in our wiki"*
-- *"What's the difference between an interface and abstract class?"*
-- *"I got a NullPointerException — help me understand it and add it to errors/"*
+- `"what do I know about inheritance?"`
+- `"what do I know about NullPointerException?"`
 
-### Running a health check
-Tell Claude Code: `"Run a lint pass on the wiki"`
+### Creating a blank page to fill in later
+- `"create stub for interfaces"`
+
+### Logging a note
+- `"log this: finished the OOP chapter"`
 
 ---
 
-## Tools you need
-- **Claude Code** — the agent that maintains this wiki
-- **Java JDK 21+** — [download here](https://adoptium.net/)
-- **IntelliJ IDEA Community** (recommended) — [download here](https://www.jetbrains.com/idea/download/)
-- **Obsidian** (optional) — for browsing the wiki visually
+## Running with a small local model (Ollama)
+
+```bash
+ollama run qwen2.5:4b
+```
+
+Or via Claude Code:
+```bash
+claude --model qwen2.5:4b
+```
+
+The CLAUDE.md in this repo is written for small models — explicit commands, fill-in templates, no complex reasoning required.
+
+---
+
+## Tools
+
+- **Ollama** — run local models: [ollama.com](https://ollama.com)
+- **Claude Code** — CLI agent: [docs.ollama.com/integrations/claude-code](https://docs.ollama.com/integrations/claude-code)
+- **Java JDK 21+** — [adoptium.net](https://adoptium.net/)
+- **IntelliJ IDEA Community** (recommended) — [jetbrains.com/idea](https://www.jetbrains.com/idea/download/)
+- **Obsidian** (optional) — browse the wiki visually with wiki-style links
 
 ---
 
 ## Directory structure
+
 ```
 java-wiki/
-  raw/           ← Drop learning material here
   wiki/
     index.md     ← Master page catalog
     log.md       ← Activity history
-    roadmap.md   ← Your progress
-    concepts/    ← Java concept articles (LLM writes these)
+    concepts/    ← Java concept articles (you write these)
     errors/      ← Bugs you've encountered + fixes
     snippets/    ← Reusable code patterns
   CLAUDE.md      ← Agent instructions & schema
   README.md      ← This file
 ```
 
-
+References:
 https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f#llm-wiki
 - **Obsidian Web Clipper** is a browser extension that converts web articles to markdown. Very useful for quickly getting sources into your raw collection.
   

@@ -1,111 +1,110 @@
-# Java Learning Wiki — Schema & Rules
-> This file defines how you (the LLM agent) should think, behave, and maintain this wiki.
-> Read this file at the start of every session.
+# Java Wiki — Agent Rules
+
+Read this file at the start of every session.
 
 ---
 
-## 🎯 Purpose
-This is a personal Java learning knowledge base. The goal is to compile raw learning
-materials into a structured, interlinked wiki that grows smarter over time.
-The human is a **beginner learning Java**. Explanations should be clear, practical,
-and use analogies where helpful. Never assume prior Java knowledge.
+## Purpose
+
+This is a Java learning wiki for a beginner. Keep explanations simple and use analogies.
 
 ---
 
-## 📁 Directory Structure
+## Directory Structure
+
 ```
-java-wiki/
-  raw/         ← Human drops source material here (articles, notes, docs, errors)
-  wiki/        ← YOU write and maintain all .md files here
-    index.md   ← Master catalog of all wiki pages (always keep updated)
-    log.md     ← Append-only activity log (never delete entries)
-    concepts/  ← Core Java concept articles
-    errors/    ← Common errors & how to fix them
-    snippets/  ← Reusable code patterns
-    roadmap.md ← Learning progress tracker
-  CLAUDE.md    ← This file (the schema)
+wiki/
+  index.md       — list of all pages
+  log.md         — activity log (append only)
+  concepts/      — concept pages (user writes these directly)
+  errors/        — error pages
+  snippets/      — code snippet pages
 ```
 
 ---
 
-## ⚙️ Operations
+## Your Two Jobs
 
-### When I say "file this" or drop something in raw/
-1. Read the raw document carefully
-2. Identify which wiki pages it relates to (check index.md first)
-3. Either UPDATE an existing page or CREATE a new one
-4. Add backlinks between related concepts
-5. Update index.md with any new pages
-6. Append an entry to log.md: `[DATE] INGEST: <filename> → <pages affected>`
+You only ever do two things:
 
-### When I ask a question
-1. Read index.md to find relevant pages
-2. Read those pages
-3. Answer from the compiled wiki knowledge
-4. If the answer isn't in the wiki yet, say so and offer to add it
-5. Append to log.md: `[DATE] QUERY: <question summary>`
-
-### When I say "lint" or "health check"
-Scan the wiki and:
-- Flag pages with no backlinks (orphans)
-- Identify concepts mentioned but not yet having their own page
-- Check roadmap.md and suggest what to learn next
-- Append to log.md: `[DATE] LINT: <findings summary>`
-
-### When I share a code error or bug
-1. Diagnose the error
-2. Explain WHY it happened (not just how to fix it)
-3. Save it to wiki/errors/ as a new page
-4. Link it from any relevant concept pages
+1. **Update index.md** when a new page exists
+2. **Append a line to log.md** to record what happened
 
 ---
 
-## 📝 Wiki Page Format
-Every concept page should follow this structure:
+## Command: "index this"
 
-```markdown
-# Concept Name
+User will say "index this: wiki/concepts/foo.md — short description"
 
-## What is it?
-Plain English explanation. Use an analogy if helpful.
+Do exactly this:
 
-## Why does it matter?
-Why a Java developer needs to know this.
+**Step 1** — Add a line to the correct section in wiki/index.md:
+```
+| [Page Title](concepts/foo.md) | short description |
+```
 
-## How it works
-The mechanics, with a simple code example.
-
-## Common mistakes
-What beginners get wrong.
-
-## Related concepts
-- [[link to related page]]
+**Step 2** — Append to wiki/log.md:
+```
+[DATE] INDEX: concepts/foo.md added to index
 ```
 
 ---
 
-## 🗺️ Learning Roadmap Order
-Guide the human through Java in this order. Mark progress in roadmap.md.
+## Command: "log this"
 
-1. [ ] Java basics — syntax, variables, data types
-2. [ ] Control flow — if/else, loops, switch
-3. [ ] Methods — parameters, return types, overloading
-4. [ ] OOP — classes, objects, constructors
-5. [ ] OOP — inheritance, interfaces, abstract classes
-6. [ ] Core APIs — String, Math, Arrays
-7. [ ] Collections — List, Map, Set
-8. [ ] Exceptions — try/catch, custom exceptions
-9. [ ] File I/O — reading and writing files
-10. [ ] Streams & Lambdas — functional style
-11. [ ] Concurrency — threads, basics
-12. [ ] Build tools — Maven basics
-13. [ ] First project — build something real
+User will say "log this: <message>"
+
+Do exactly this — append one line to wiki/log.md:
+```
+[DATE] NOTE: <message>
+```
 
 ---
 
-## 🔒 Hard Rules
-- NEVER silently overwrite a page — if you change something significant, note it in log.md
-- NEVER write wiki pages in a tone that talks down to the learner
-- ALWAYS link related concepts with [[wiki-style links]]
-- ALWAYS explain the "why", not just the "how"
-- When evidence in docs contradicts a simpler explanation, trust the docs and update the page
+## Command: "what do I know about X?"
+
+1. Read wiki/index.md
+2. Find a matching page and read it
+3. Answer from what is in the page. If no match, say: "Not in the wiki yet. Want me to create a stub?"
+4. Append to log.md: `[DATE] QUERY: X`
+
+---
+
+## Command: "create stub for X"
+
+Write a new file at wiki/concepts/x.md with this structure:
+
+    # X
+    
+    ## What is it?
+    
+    ## Why does it matter?
+    
+    ## How it works
+    
+    ## Common mistakes
+    
+    ## Related concepts
+
+Then index it (follow "index this" steps above).
+
+---
+
+## log.md format
+
+One line per entry:
+```
+[YYYY-MM-DD] ACTION: details
+```
+
+Actions: INDEX, QUERY, NOTE, CREATE, UPDATE, ERROR
+
+Never delete any line from log.md.
+
+---
+
+## Hard Rules
+
+- Do not overwrite a page without appending an UPDATE entry to log.md
+- Do not assume Java knowledge — explain everything simply
+- Always link related concepts as `[[concept-name]]`
