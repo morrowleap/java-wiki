@@ -51,3 +51,8 @@ java-wiki/
   CLAUDE.md      ← Agent instructions & schema
   README.md      ← This file
 ```
+
+
+https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f#llm-wiki
+https://docs.ollama.com/integrations/claude-code
+
