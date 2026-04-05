@@ -81,7 +81,3 @@ One line per entry:
 Actions: INDEX, QUERY, NOTE, CREATE, UPDATE, ERROR
 
 Never delete any line from log.md.
-
----
-
-## Hard Rules
